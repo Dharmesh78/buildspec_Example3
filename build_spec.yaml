@@ -24,4 +24,4 @@ steps:
 outputArtifacts:
   - name: outputEg3
     type: BINARY
-    location: HelloWorld.class
+    location: src/main/java/org/example/HelloWorld.class
