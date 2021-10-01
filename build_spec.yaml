@@ -1,0 +1,27 @@
+version: 0.1
+component: build
+timeoutInSeconds: 6000
+runAs: root
+shell: bash
+env:
+  variables:
+    "var" : "20"   #build run paramater
+  exportedVariables:
+    - var
+
+steps:
+  - type: Command
+    name: "Build Source 1"
+    timeoutInSeconds: 400
+    command: |
+      echo $minor_version
+      var=22
+      javac HelloWorld.java
+      echo "compiled successfully"
+      java HelloWorld
+  
+outputArtifacts:
+  - name: outputEg3
+    version: ${var}
+    type: BINARY
+    location: HelloWorld.class
