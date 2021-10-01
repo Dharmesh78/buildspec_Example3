@@ -20,6 +20,7 @@ steps:
       javac HelloWorld.java
       echo "compiled successfully"
       java HelloWorld
+      echo $var
   
 outputArtifacts:
   - name: outputEg3
