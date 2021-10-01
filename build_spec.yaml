@@ -23,6 +23,5 @@ steps:
   
 outputArtifacts:
   - name: outputEg3
-    version: ${var}
     type: BINARY
     location: HelloWorld.class
