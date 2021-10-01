@@ -5,7 +5,7 @@ runAs: root
 shell: bash
 env:
   variables:
-    "var" : "20"   #build run paramater
+    "var" : "20"
   exportedVariables:
     - var
 
@@ -14,8 +14,9 @@ steps:
     name: "Build Source 1"
     timeoutInSeconds: 400
     command: |
-      echo $minor_version
+      echo $var
       var=22
+      cd src/main/java/org/example
       javac HelloWorld.java
       echo "compiled successfully"
       java HelloWorld
