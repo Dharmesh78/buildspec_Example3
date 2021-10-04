@@ -16,7 +16,6 @@ steps:
     command: |
       echo "before export variable value change"
       echo $var
-      var=22
       cd src/main/java/org/example
       javac HelloWorld.java
       echo "compiled successfully"
