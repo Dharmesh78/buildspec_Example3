@@ -3,19 +3,23 @@ component: build
 timeoutInSeconds: 6000
 runAs: root
 shell: bash
+env:
+  exportedVariables:
+    - var
 
 steps:
   - type: Command
-    name: "Build Source 1"
+    name: "Build Source 2"
     timeoutInSeconds: 400
     command: |
-      echo "before export variable value change"
+      echo "var value before "
       echo $var
       cd src/main/java/org/example
       javac HelloWorld.java
       echo "compiled successfully"
       java HelloWorld
-      echo "after export variable value change"
+      echo "export variable var value change"
+      var=22
       echo $var
   
 outputArtifacts:
