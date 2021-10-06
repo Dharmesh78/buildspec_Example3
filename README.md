@@ -33,6 +33,8 @@ In your Build Pipeline , click on Parameters tab, and provide pipeline parameter
 Name: var       Value: 19       Description: pipeline parameter
 Click on + tab to add this parameter
 
+<img src="pipeline_param.png"/>
+
 ### Specify Exported variable
 In your build_spec.yaml, specify "var" under exportedVariables section and in commands set the value of this variable to 22.
 
@@ -44,33 +46,39 @@ To configure access for oci-curl for the first time, follow this link https://co
 
 
 #### make a createBuildRun.json file and paste the followinf contents in it (BuildRun argument as var:22)
-{
-"displayName": "build#1",
-"buildPipelineId": <PIPELINE_ID>,
-"commitInfo": {
-"repositoryUrl": "string",
-"repositoryBranch": "string",
-"commitHash": "string"
-},
-"buildRunArguments": {
-    "items": [
-      {
-        "name": "var",
-        "value": "22"
-      }
-    ]
-  },
- "freeformTags": {},
- "definedTags": {}
-}
+```
+    {
+    "displayName": "build#1",
+    "buildPipelineId": <PIPELINE_ID>,
+    "commitInfo": {
+    "repositoryUrl": "string",
+    "repositoryBranch": "string",
+    "commitHash": "string"
+    },
+    "buildRunArguments": {
+        "items": [
+        {
+            "name": "var",
+            "value": "22"
+        }
+        ]
+    },
+    "freeformTags": {},
+    "definedTags": {}
+    }
+```
 
 #### Run your pipeline using oci-curl
-oci-curl devops-beta.us-ashburn-1.oci.oc-test.com POST createBuildRun.json "/20210630/buildRuns"
+```oci-curl devops-beta.us-ashburn-1.oci.oc-test.com POST createBuildRun.json "/20210630/buildRuns"```
 
 
 
 ### Check the build context after build run execution gets completed
-at the end of build run execution run the following command
-oci-curl devops-beta.us-ashburn-1.oci.oc-test.com GET "/20210630/buildRuns/<PIPELINE_ID>"
+1. Go to build history
+<img src="build_history.png" />
+2. Copy your Build Run OCID from current Build run
+3. At the end of build run execution run the following command in your terminal
+   oci-curl devops-beta.us-ashburn-1.oci.oc-test.com GET "/20210630/buildRuns/<BUILD_RUN_ID>"
 
-, you will find that the value of var changed to 22, which means the exportedVariable overrides both pipeline and build run parameter.
+  , you will find that the value of var changed to 22, which means the exportedVariable overrides both pipeline and build run parameter.
+<img src="cbuild_context.png" />
