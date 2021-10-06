@@ -81,4 +81,4 @@ To configure access for oci-curl for the first time, follow this link https://co
    oci-curl devops-beta.us-ashburn-1.oci.oc-test.com GET "/20210630/buildRuns/<BUILD_RUN_ID>"
 
   , you will find that the value of var changed to 22, which means the exportedVariable overrides both pipeline and build run parameter.
-<img src="cbuild_context.png" />
+<img src="build_context.png" />
