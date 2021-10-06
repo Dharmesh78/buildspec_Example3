@@ -9,18 +9,16 @@ env:
 
 steps:
   - type: Command
-    name: "Build Source 2"
+    name: "Github Build Source"
     timeoutInSeconds: 400
     command: |
-      echo "var value before "
-      echo $var
+      echo "VALUE OF VAR BEFORE "$var
       cd src/main/java/org/example
       javac HelloWorld.java
-      echo "compiled successfully"
+      echo "COMPILED SUCCESSFULLY"
       java HelloWorld
-      echo "export variable var value change"
       var=22
-      echo $var
+      echo "VALUE OF VAR AFTER "$var
   
 outputArtifacts:
   - name: outputEg3
